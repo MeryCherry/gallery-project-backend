@@ -5,9 +5,9 @@ using Microsoft.Extensions.Options;
 
 namespace DataAccessLayer.DAL
 {
-    public class CountryDAL : BaseEntityDAL<Country, CountryEntity>
+    public class UserDAL : BaseEntityDAL<Users,UserEntity>
     {
+        public UserDAL(IOptions<AppSettingsModel> settings) : base(settings){ }
 
-        public CountryDAL(IOptions<AppSettingsModel> settings) : base(settings) { }
     }
 }

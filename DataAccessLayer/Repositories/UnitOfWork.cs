@@ -18,14 +18,15 @@ namespace DataAccessLayer.Repositories
             Context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public IRepository<TEntity> GetRepository<TEntity>() where TEntity : class
-        {
+        public IRepository<TDAL, TBLL> GetRepository<TDAL, TBLL>() where TDAL : class
+                                                                   where TBLL : class
+        {                                                          
             if (_repositories == null) _repositories = new Dictionary<Type, object>();
 
-            var type = typeof(TEntity);
+            var type = typeof(TDAL);
             //checks if repository with specific type already exists
-            if (!_repositories.ContainsKey(type)) _repositories[type] = new Repository<TEntity>(Context);
-            return (IRepository<TEntity>)_repositories[type];
+            if (!_repositories.ContainsKey(type)) _repositories[type] = new Repository<TDAL, TBLL>(Context);
+            return (IRepository<TDAL, TBLL>)_repositories[type];
         }
 
         //public IRepositoryAsync<TEntity> GetRepositoryAsync<TEntity>() where TEntity : class

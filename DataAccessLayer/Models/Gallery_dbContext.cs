@@ -1,4 +1,4 @@
-﻿using Bootstrap;
+﻿using BusinessLayer.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
@@ -14,9 +14,7 @@ namespace DataAccessLayer.Models
         }
 
         public Gallery_dbContext(DbContextOptions<Gallery_dbContext> options)
-            : base(options)
-        {
-        }
+            : base(options) {}
 
         public virtual DbSet<CartItem> CartItem { get; set; }
         public virtual DbSet<CartItemTypes> CartItemTypes { get; set; }

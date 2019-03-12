@@ -6,7 +6,8 @@ namespace DataAccessLayer.Repositories.Interfaces
 {
     public interface IRepositoryFactory
     {
-        IRepository<T> GetRepository<T>() where T : class;
+        IRepository<TDAL, TBLL> GetRepository<TDAL, TBLL>() where TDAL : class
+                                                            where TBLL: class;
         //IRepositoryAsync<T> GetRepositoryAsync<T>() where T : class;
         //IRepositoryReadOnly<T> GetReadOnlyRepository<T>() where T : class;
     }

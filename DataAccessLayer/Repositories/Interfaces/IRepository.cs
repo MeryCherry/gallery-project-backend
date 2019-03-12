@@ -4,21 +4,21 @@ using System.Text;
 
 namespace DataAccessLayer.Repositories.Interfaces
 {
-    public interface IRepository<T> : IReadRepository<T>, IDisposable where T : class
+    public interface IRepository<TDAL, TBLL> : IReadRepository<TDAL>, IDisposable where TDAL : class
     {
-        void Add(T entity);
-        void Add(params T[] entities);
-        void Add(IEnumerable<T> entities);
+        void Add(TBLL entity);
+        void Add(params TBLL[] entities);
+        void Add(IEnumerable<TBLL> entities);
 
 
-        void Delete(T entity);
+        void Delete(TBLL entity);
         void Delete(object id);
-        void Delete(params T[] entities);
-        void Delete(IEnumerable<T> entities);
+        void Delete(params TBLL[] entities);
+        void Delete(IEnumerable<TBLL> entities);
 
 
-        void Update(T entity);
-        void Update(params T[] entities);
-        void Update(IEnumerable<T> entities);
+        void Update(TBLL entity);
+        void Update(params TBLL[] entities);
+        void Update(IEnumerable<TBLL> entities);
     }
 }

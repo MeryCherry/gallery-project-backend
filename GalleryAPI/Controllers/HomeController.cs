@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using GalleryAPI.Models;
-using DataAccessLayer.Models;
+﻿using BusinessLayer.AppEntities;
+using BusinessLayer.Configuration;
 using DataAccessLayer.DAL;
+using DataAccessLayer.Models;
+using GalleryAPI.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using Bootstrap;
+using System.Diagnostics;
+using System.Text;
 
 namespace GalleryAPI.Controllers
 {
@@ -26,7 +24,7 @@ namespace GalleryAPI.Controllers
         public IActionResult Index()
         {
 
-            CountryDAL b = new CountryDAL(_settings);
+            UserDAL b = new UserDAL(_settings);
 
             return View(b.Select().Items);
            // return View();
@@ -35,7 +33,12 @@ namespace GalleryAPI.Controllers
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
+            var data = Encoding.ASCII.GetBytes("password");
+            UserEntity us = new UserEntity() {    Name = "Andrew",  IdRole = 3, Password = data,
+                ProfilePictName = "andi", Email = "andi@wp.pl"};
 
+            UserDAL b = new UserDAL(_settings);
+            b.Add(us);
             return View();
         }
 
