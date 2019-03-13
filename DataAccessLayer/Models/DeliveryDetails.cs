@@ -1,9 +1,10 @@
-﻿using System;
+﻿using DataAccessLayer.DAL.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace DataAccessLayer.Models
 {
-    public partial class DeliveryDetails
+    public partial class DeliveryDetails : IDataBaseEntity
     {
         public int Id { get; set; }
         public int Iduser { get; set; }

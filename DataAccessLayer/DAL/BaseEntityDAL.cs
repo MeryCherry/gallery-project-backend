@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Configuration;
+﻿using AutoMapper;
+using BusinessLayer.Configuration;
 using DataAccessLayer.DAL.Interfaces;
 using DataAccessLayer.Models;
 using DataAccessLayer.Repositories;
@@ -9,7 +10,7 @@ namespace DataAccessLayer.DAL
 {
 
 
-    public class BaseEntityDAL<TDAL, TBLL>: IBaseEntityDAL<TDAL, TBLL> where TDAL: class where TBLL : class
+    public class BaseEntityDAL<TDAL, TBLL>: IBaseEntityDAL<TBLL> where TDAL: class, IDataBaseEntity where TBLL : class
     {
         private readonly Gallery_dbContext _context;
 
@@ -18,15 +19,44 @@ namespace DataAccessLayer.DAL
             _context = new Gallery_dbContext(settings);
         }
 
-        //TODO: it has to be paginate for business layer
-        public IPaginate<TDAL> Select()
+        /// <summary>
+        /// Mapping method
+        /// </summary>
+        /// <typeparam name="Source">type of source of mapping</typeparam>
+        /// <typeparam name="Destiny">type mapper creates map to</typeparam>
+        /// <param name="obj">object to be mapped</param>
+        /// <returns>mapped object</returns>
+        protected virtual Destiny Map<Source, Destiny>(Source obj)
         {
-            IPaginate<TDAL> result;
+            var config = new MapperConfiguration(cfg => {
+                cfg.CreateMap<Source, Destiny>();
+            });
+
+            IMapper mapper = config.CreateMapper();
+            return mapper.Map<Source, Destiny>(obj);
+        }
+
+        public IPaginate<TBLL> Select()
+        {
+            IPaginate<TBLL> result;
             using (var uow = new UnitOfWork<Gallery_dbContext>(_context))
             {
-                result = uow.GetRepository<TDAL, TBLL>().GetList(size: 5);
-               
-               // res.Items =  Mapper.Map<TBLL[]>(res.Items);
+                var r = uow.GetRepository<TDAL, TBLL>().GetList(size: 5);
+
+               result =  Map<IPaginate<TDAL>, Paginate<TBLL>>(r);
+
+            }
+            return result;
+        }
+
+        public TBLL Get(int id)
+        {
+            TBLL result;
+            using (var uow = new UnitOfWork<Gallery_dbContext>(_context))
+            {
+                var r = uow.GetRepository<TDAL, TBLL>().GetList(predicate: en =>en.Id==id)?.Items;
+                
+                result = r.Count>0 ? Map<TDAL, TBLL>(r[0]): default(TBLL);
 
             }
             return result;
@@ -40,8 +70,6 @@ namespace DataAccessLayer.DAL
                 var repo = uow.GetRepository<TDAL, TBLL>();
                 repo.Add(entity);
                 uow.SaveChanges();
-
-
             }
         }
 
@@ -55,5 +83,28 @@ namespace DataAccessLayer.DAL
                 uow.SaveChanges();
             }
         }
+
+        public void Delete(int id)
+        {
+
+            using (var uow = new UnitOfWork<Gallery_dbContext>(_context))
+            {
+                var repo = uow.GetRepository<TDAL, TBLL>();
+                repo.Delete(id);
+                uow.SaveChanges();
+            }
+        }
+
+        public void Update(TBLL entity)
+        {
+
+            using (var uow = new UnitOfWork<Gallery_dbContext>(_context))
+            {
+                var repo = uow.GetRepository<TDAL, TBLL>();
+                repo.Update(entity);
+                uow.SaveChanges();
+            }
+        }
     }
 }
+

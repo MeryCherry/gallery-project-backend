@@ -1,9 +1,10 @@
-﻿using System;
+﻿using DataAccessLayer.DAL.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace DataAccessLayer.Models
 {
-    public partial class Role
+    public partial class Role : IDataBaseEntity
     {
         public Role()
         {

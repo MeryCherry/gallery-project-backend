@@ -10,7 +10,7 @@ namespace DataAccessLayer.Repositories.Interfaces
         IRepository<TDAL, TEntity> GetRepository<TDAL,TEntity>() where TEntity : class 
                                                                  where TDAL : class;
         //IRepositoryAsync<TEntity> GetRepositoryAsync<TEntity>() where TEntity : class;
-        //IRepositoryReadOnly<TEntity> GetReadOnlyRepository<TEntity>() where TEntity : class;
+       // IRepositoryReadOnly<TEntity> GetReadOnlyRepository<TEntity>() where TEntity : class;
 
         int SaveChanges();
     }

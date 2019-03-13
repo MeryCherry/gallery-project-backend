@@ -12,7 +12,6 @@ namespace GalleryAPI.Controllers
 {
     public class HomeController : Controller
     {
-        private Gallery_dbContext shopContext;
 
         private IOptions<AppSettingsModel> _settings;
         public HomeController( IOptions<AppSettingsModel> settings)
