@@ -9,6 +9,6 @@ namespace DataAccessLayer.Repositories.Interfaces
         IRepository<TDAL, TBLL> GetRepository<TDAL, TBLL>() where TDAL : class
                                                             where TBLL: class;
         //IRepositoryAsync<T> GetRepositoryAsync<T>() where T : class;
-        //IRepositoryReadOnly<T> GetReadOnlyRepository<T>() where T : class;
+        IRepositoryReadOnly<TDAL> GetReadOnlyRepository<TDAL>() where TDAL : class;
     }
 }

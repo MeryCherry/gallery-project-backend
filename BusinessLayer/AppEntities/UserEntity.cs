@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BusinessLayer.AppEntities
 {
@@ -11,6 +9,8 @@ namespace BusinessLayer.AppEntities
         public int IdRole { get; set; }
         public byte[] Password { get; set; }
         public string ProfilePictName { get; set; }
+        [Required]
+        [EmailAddress]
         public string Email { get; set; }
 
         public RoleEntity IdRoleNavigation { get; set; }

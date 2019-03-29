@@ -1,6 +1,7 @@
 ﻿using DataAccessLayer.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace DataAccessLayer.Models
 {
@@ -10,8 +11,9 @@ namespace DataAccessLayer.Models
         {
             CartItem = new HashSet<CartItem>();
         }
-
+        [Key]
         public int Id { get; set; }
+        [Required]
         public int Iduser { get; set; }
         public DateTime CreatedDate { get; set; }
 

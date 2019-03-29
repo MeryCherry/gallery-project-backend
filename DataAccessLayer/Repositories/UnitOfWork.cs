@@ -38,14 +38,14 @@ namespace DataAccessLayer.Repositories
         //    return (IRepositoryAsync<TEntity>)_repositories[type];
         //}
 
-        //public IRepositoryReadOnly<TEntity> GetReadOnlyRepository<TEntity>() where TEntity : class
-        //{
-        //    if (_repositories == null) _repositories = new Dictionary<Type, object>();
+        public IRepositoryReadOnly<TEntity> GetReadOnlyRepository<TEntity>() where TEntity : class
+        {
+            if (_repositories == null) _repositories = new Dictionary<Type, object>();
 
-        //    var type = typeof(TEntity);
-        //    if (!_repositories.ContainsKey(type)) _repositories[type] = new RepositoryReadOnly<TEntity>(Context);
-        //    return (IRepositoryReadOnly<TEntity>)_repositories[type];
-        //}
+            var type = typeof(TEntity);
+            if (!_repositories.ContainsKey(type)) _repositories[type] = new RepositoryReadOnly<TEntity>(Context);
+            return (IRepositoryReadOnly<TEntity>)_repositories[type];
+        }
         //database context
         public TContext Context { get; }
 

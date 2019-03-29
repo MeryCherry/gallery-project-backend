@@ -1,6 +1,8 @@
 ﻿using DataAccessLayer.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataAccessLayer.Models
 {
@@ -12,12 +14,17 @@ namespace DataAccessLayer.Models
             OrderTb = new HashSet<OrderTb>();
             ShoppingCart = new HashSet<ShoppingCart>();
         }
-
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public int IdRole { get; set; }
+        [Required]
         public byte[] Password { get; set; }
         public string ProfilePictName { get; set; }
+        [Required]
         public string Email { get; set; }
 
         public virtual Role IdRoleNavigation { get; set; }
