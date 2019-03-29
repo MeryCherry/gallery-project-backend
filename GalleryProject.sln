@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GalleryAPI", "GalleryAPI\Ga
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{4E291219-E851-4775-84E9-36DC5C561901}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalleryDataTest", "GalleryDataTest\GalleryDataTest.csproj", "{F22EA27A-ADEE-49F1-8A4C-A801C912D86A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GalleryMoqDataTest", "GalleryDataTest\GalleryMoqDataTest.csproj", "{F22EA27A-ADEE-49F1-8A4C-A801C912D86A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalleryRESTWebService", "GalleryRESTWebService\GalleryRESTWebService.csproj", "{3C29F979-E1DB-4134-B3DA-4C201D57EA51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GalleryRESTWebService", "GalleryRESTWebService\GalleryRESTWebService.csproj", "{3C29F979-E1DB-4134-B3DA-4C201D57EA51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
