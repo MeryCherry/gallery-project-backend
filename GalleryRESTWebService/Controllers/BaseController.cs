@@ -12,12 +12,11 @@ namespace GalleryRESTWebService.Controllers
                                                                  where TBLL: class
     {
         protected IOptions<AppSettingsModel> _settings;
-        protected TProvider _provider;
+        protected IBaseEntityDAL<TBLL> _provider;
 
-        public BaseController(IOptions<AppSettingsModel> settings)
+        public BaseController(IEntityDALFactory factory)
         {
-            this._settings = settings;
-            _provider = (TProvider)Activator.CreateInstance(typeof(TProvider), new object[] { _settings });
+            _provider = factory.Get<TProvider,TBLL>();
 
         }
 

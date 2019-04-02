@@ -1,8 +1,7 @@
 ﻿using BusinessLayer.AppEntities;
-using BusinessLayer.Configuration;
 using DataAccessLayer.DAL;
+using DataAccessLayer.DAL.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,6 +11,6 @@ namespace GalleryRESTWebService.Controllers
     [ApiController]
     public class CountryController : BaseController<CountryDAL, CountryEntity>
     {
-        public CountryController(IOptions<AppSettingsModel> settings) : base(settings) { }
+        public CountryController(IEntityDALFactory factory) : base(factory) { }
     }
 }

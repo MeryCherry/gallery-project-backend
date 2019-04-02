@@ -1,8 +1,7 @@
 ﻿using BusinessLayer.AppEntities;
-using BusinessLayer.Configuration;
 using DataAccessLayer.DAL;
+using DataAccessLayer.DAL.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 
 namespace GalleryRESTWebService.Controllers
 {
@@ -10,6 +9,6 @@ namespace GalleryRESTWebService.Controllers
     [ApiController]
     public class DeliveryOptionController : BaseController<DeliveryOptionDAL, DeliveryOptionEntity>
     {
-        public DeliveryOptionController(IOptions<AppSettingsModel> settings) : base(settings) { }
+        public DeliveryOptionController(IEntityDALFactory factory) : base(factory) { }
     }
 }
