@@ -12,8 +12,8 @@ namespace DataAccessLayer.Models
         {
             DeliveryDetails = new HashSet<DeliveryDetails>();
         }
-        //[Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [Key]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }

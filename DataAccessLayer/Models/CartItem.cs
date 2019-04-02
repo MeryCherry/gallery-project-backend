@@ -12,8 +12,8 @@ namespace DataAccessLayer.Models
         {
             OrderItem = new HashSet<OrderItem>();
         }
-        //[Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
+       // [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
         public int ProductId { get; set; }
