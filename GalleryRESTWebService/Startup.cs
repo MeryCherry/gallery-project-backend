@@ -1,14 +1,12 @@
 ﻿using BusinessLayer.Configuration;
-using DataAccessLayer.DAL.Interfaces;
 using DataAccessLayer.DAL;
+using DataAccessLayer.DAL.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using DataAccessLayer.Models;
-using BusinessLayer.AppEntities;
 
 namespace GalleryRESTWebService
 {

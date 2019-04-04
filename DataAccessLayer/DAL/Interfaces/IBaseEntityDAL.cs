@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.Repositories.Interfaces;
+﻿using BusinessLayer.AppEntities;
+using DataAccessLayer.Repositories.Interfaces;
 
 namespace DataAccessLayer.DAL.Interfaces
 {
@@ -7,7 +8,7 @@ namespace DataAccessLayer.DAL.Interfaces
     /// for DataAccessLayer
     /// </summary>
     /// <typeparam name="TBLL">Business logic entity</typeparam>
-    public interface IBaseEntityDAL<TBLL> where TBLL : class
+    public interface IBaseEntityDAL<TBLL> where TBLL : class, IBaseEntity
     {
         /// <summary>
         /// Get list of entites

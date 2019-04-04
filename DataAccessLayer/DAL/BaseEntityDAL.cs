@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BusinessLayer.AppEntities;
 using BusinessLayer.Configuration;
 using DataAccessLayer.DAL.Interfaces;
 using DataAccessLayer.Models;
@@ -10,7 +11,7 @@ namespace DataAccessLayer.DAL
 {
 
 
-    public class BaseEntityDAL<TDAL, TBLL>: IBaseEntityDAL<TBLL> where TDAL: class, IDataBaseEntity where TBLL : class
+    public class BaseEntityDAL<TDAL, TBLL>: IBaseEntityDAL<TBLL> where TDAL: class, IDataBaseEntity where TBLL : class, IBaseEntity
     {
         private readonly Gallery_dbContext _context;
 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BusinessLayer.AppEntities
 {
-    public class CartItemEntity
+    public class CartItemEntity : IBaseEntity
     {
         public int Id { get; set; }
         public int ProductId { get; set; }

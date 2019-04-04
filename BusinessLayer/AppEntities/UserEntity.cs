@@ -2,7 +2,7 @@
 
 namespace BusinessLayer.AppEntities
 {
-    public class UserEntity
+    public class UserEntity : IBaseEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }

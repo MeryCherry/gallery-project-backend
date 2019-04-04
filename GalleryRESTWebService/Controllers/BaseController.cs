@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Configuration;
+﻿using BusinessLayer.AppEntities;
+using BusinessLayer.Configuration;
 using DataAccessLayer.DAL.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +10,7 @@ using System.Linq;
 namespace GalleryRESTWebService.Controllers
 {
     public class BaseController<TProvider,TBLL> : ControllerBase where TProvider : IBaseEntityDAL<TBLL>
-                                                                 where TBLL: class
+                                                                 where TBLL: class, IBaseEntity
     {
         protected IOptions<AppSettingsModel> _settings;
         protected IBaseEntityDAL<TBLL> _provider;

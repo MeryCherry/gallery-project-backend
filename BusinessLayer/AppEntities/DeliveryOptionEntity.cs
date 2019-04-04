@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BusinessLayer.AppEntities
 {
-    public class DeliveryOptionEntity
+    public class DeliveryOptionEntity : IBaseEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }

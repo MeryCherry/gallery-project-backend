@@ -2,7 +2,7 @@
 
 namespace BusinessLayer.AppEntities
 {
-    public class PaymentOptionEntity
+    public class PaymentOptionEntity : IBaseEntity
     {
         [Key]
         public int Id { get; set; }

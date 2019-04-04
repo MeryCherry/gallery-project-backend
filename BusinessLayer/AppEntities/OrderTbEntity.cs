@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BusinessLayer.AppEntities
 {
-    public class OrderTbEntity
+    public class OrderTbEntity : IBaseEntity
     {
         [Key]
         public int Id { get; set; }

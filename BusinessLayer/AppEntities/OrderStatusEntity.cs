@@ -2,7 +2,7 @@
 
 namespace BusinessLayer.AppEntities
 {
-    public class OrderStatusEntity
+    public class OrderStatusEntity : IBaseEntity
     {
         [Key]
         public int Id { get; set; }

@@ -1,10 +1,8 @@
-﻿using BusinessLayer.Configuration;
+﻿using BusinessLayer.AppEntities;
+using BusinessLayer.Configuration;
 using DataAccessLayer.DAL.Interfaces;
-using DataAccessLayer.Models;
 using Microsoft.Extensions.Options;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DataAccessLayer.DAL
 {
@@ -17,7 +15,7 @@ namespace DataAccessLayer.DAL
             _settings = settings;
         }
 
-        public IBaseEntityDAL<TBLL> Get<TProvider, TBLL>() where TBLL : class
+        public IBaseEntityDAL<TBLL> Get<TProvider, TBLL>() where TBLL : class, IBaseEntity
             where TProvider : IBaseEntityDAL<TBLL>
         {
             return (TProvider)Activator.CreateInstance(typeof(TProvider), new object[] { _settings });
