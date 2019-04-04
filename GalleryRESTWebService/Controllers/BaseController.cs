@@ -51,10 +51,14 @@ namespace GalleryRESTWebService.Controllers
 
 
         [HttpPost]
-       // [ProducesResponseType(typeof(Product), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(UserEntity), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Post([FromBody] TBLL entity)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             try
             {
                 _provider.Add(entity);
@@ -63,12 +67,12 @@ namespace GalleryRESTWebService.Controllers
             {
                 return BadRequest(e);
             }
-            return Ok();
+            return CreatedAtAction("Post", new { id = entity.Id }, entity);
         }
 
 
         [HttpPut("{id}")]
-        // [ProducesResponseType(typeof(Product), StatusCodes.Status201Created)]
+         [ProducesResponseType(typeof(UserEntity), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Put(int id, [FromBody] TBLL entity)
         {
@@ -80,7 +84,7 @@ namespace GalleryRESTWebService.Controllers
             {
                 return BadRequest(e);
             }
-            return Ok();
+            return CreatedAtAction("Post", new { id = entity.Id }, entity);
         }
 
         // DELETE: api/ApiWithActions/5
@@ -88,6 +92,12 @@ namespace GalleryRESTWebService.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Delete(int id)
         {
+            var existingItem = _provider.Get(id);
+
+            if (existingItem == null)
+            {
+                return NotFound();
+            }
             try
             {
                 _provider.Delete(id);

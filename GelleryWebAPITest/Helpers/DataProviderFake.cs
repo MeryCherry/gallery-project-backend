@@ -24,7 +24,9 @@ namespace GalleryWebAPITest.Helpers
 
         public TBLL Get(int id)
         {
-            return _entityList.First(x=>x.Id == id);
+            var searched = _entityList.Where(x => x.Id == id);
+            if (!searched.Any()) return null;
+            return searched.First();
         }
 
         public void Add(TBLL entity)
